@@ -1,12 +1,8 @@
 package Springweb.controller;
 
-
-
-
 import Springweb.*;
 import Springweb.entity.Vegetable3;
 import Springweb.repository.VegetableRepository;
-
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,22 +21,21 @@ public class VegetableController {
 
     @Autowired
     private VegetableRepository vegtableRepository;
-    
+
     @GetMapping("/index")
-    public @ResponseBody Iterable<Vegetable3> index(Model m)
-    {
-        return  vegtableRepository.findAll();
-        //m.addAttribute("data", list);
-        //return "home";
-        
+    public @ResponseBody Iterable<Vegetable3> index(Model m) {
+        return vegtableRepository.findAll();
+        // m.addAttribute("data", list);
+        // return "home";
+
     }
-    @GetMapping("/all")
-    public String getAll(Model m)
-    {
+
+    @GetMapping("/")
+    public String getAll(Model m) {
         Iterable<Vegetable3> list = vegtableRepository.findAll();
         m.addAttribute("data", list);
         return "home";
-        
+
     }
-    
+
 }
