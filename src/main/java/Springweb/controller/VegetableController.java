@@ -22,20 +22,25 @@ public class VegetableController {
     @Autowired
     private VegetableRepository vegtableRepository;
 
-    @GetMapping("/index")
-    public @ResponseBody Iterable<Vegetable3> index(Model m) {
-        return vegtableRepository.findAll();
-        // m.addAttribute("data", list);
-        // return "home";
-
-    }
-
     @GetMapping("/")
     public String getAll(Model m) {
         Iterable<Vegetable3> list = vegtableRepository.findAll();
         m.addAttribute("data", list);
         return "home";
+    }
 
+    @GetMapping("/best-seller")
+    public String getBestSeller(Model m) {
+        Iterable<Vegetable3> list = vegtableRepository.findAll();
+        m.addAttribute("data", list);
+        return "bestseller";
+    }
+
+    @GetMapping("/product-of-category")
+    public String getProductOfCat(Model m) {
+        Iterable<Vegetable3> list = vegtableRepository.findAll();
+        m.addAttribute("data", list);
+        return "productofcategory";
     }
 
 }
