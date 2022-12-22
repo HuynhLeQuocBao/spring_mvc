@@ -11,17 +11,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class CategoryController {
-    
-    
-    @Autowired CategoryRepository categoryRepository; //
-    
-    @GetMapping( value = "/category")
-    public String getAll(Model model)
-    {
+
+    @Autowired
+    CategoryRepository categoryRepository; //
+
+    @GetMapping(value = "/category")
+    public String getAll(Model model) {
         Iterable<Category> list = categoryRepository.findAll();
         model.addAttribute("list", list);
-        return "category";
-        
-        
+        return "home";
+
     }
 }

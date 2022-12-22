@@ -21,17 +21,18 @@ public class VegetableServiceImpl implements VegetableService {
 
     @Autowired
     private VegetableRepository vegtableRepository;
+
     @Override
     public Iterable<Vegetable3> findAll() {
-        
+
         return vegtableRepository.findAll();
-        
-       
+
     }
 
     @Override
     public List<Vegetable3> search(String term) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }
