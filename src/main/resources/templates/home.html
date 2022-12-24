@@ -26,10 +26,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/home}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" th:href="@{/}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/home/best-seller}">Best Seller</a>
+                        <a class="nav-link" th:href="@{/best-seller}">Best Seller</a>
                     </li>
                 </ul>
                 <div class="dropdown">
@@ -39,17 +39,17 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" th:href="@{/home}">All</a>
-                        <a class="dropdown-item" th:each="cat : ${categogy}" th:text="${cat.name}"
+                        <a class="dropdown-item" th:each="cat : ${list}" th:text="${cat.name}"
                             th:href="@{/home(cat=${cat.CatagoryId})}"></a>
                     </div>
                 </div>
-                <form class="form-inline my-2 my-lg-0 mx-5" th:action="@{/home/search-vegetable}">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search vegetable..."
+                <form class="form-inline my-2 my-lg-0 mx-5" th:action="@{/search_vegetable}" method="post">
+                    <input class="form-control mr-sm-2" type="search"  name="search_vegetable" placeholder="Search vegetable..."
                         aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
-                <form class="form-inline my-2 my-lg-0" th:action="@{/home/search-catagory}">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search category..."
+                <form class="form-inline my-2 my-lg-0" th:action="@{/search_category}" method="post">
+                    <input class="form-control mr-sm-2" type="search" name="search_category" placeholder="Search category..."
                         aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
