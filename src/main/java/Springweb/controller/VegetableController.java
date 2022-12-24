@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,14 +26,15 @@ public class VegetableController {
 
     @Autowired
     private VegetableRepository vegtableRepository;
-    // private CategoryRepository categoryRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @GetMapping("/")
     public String getAll(Model m) {
         Iterable<Vegetable3> list = vegtableRepository.findAll();
         m.addAttribute("data", list);
-        // Iterable<Category> category = categoryRepository.findAll();
-        // m.addAttribute("category", category);
+        Iterable<Category> category = categoryRepository.findAll();
+        m.addAttribute("list", category);
         return "home";
     }
 
@@ -40,7 +42,7 @@ public class VegetableController {
     public String searchVegetable(Model m, @RequestParam(name="search_vegetable", required = false) String name){
         List <Vegetable3> list;
         if(name!=""){
-            list = vegtableRepository.SearchVegetableByCategogyIdOrName( name);
+            list = vegtableRepository.SearchByCategogyNameOrVegetableName( name, name);
             System.out.println("test"+list);
         } else{
             list= (List<Vegetable3>) vegtableRepository.findAll();
@@ -54,5 +56,13 @@ public class VegetableController {
         List<Vegetable3> list = vegtableRepository.getBestSeller();
         m.addAttribute("data", list);
         return "home";
+    }
+
+    @GetMapping("/{cateId}")
+    public String getAll(Model model, @PathVariable String cateId) {
+        List <Vegetable3> list = vegtableRepository.findByCategory(cateId);
+        model.addAttribute("data", list);
+        return "home";
+
     }
 }

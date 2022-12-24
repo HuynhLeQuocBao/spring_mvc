@@ -20,26 +20,15 @@ public class CategoryController {
 
     @Autowired
     CategoryRepository categoryRepository; //
+    @Autowired
     VegetableRepository vegtableRepository;
 
-    @GetMapping(value = "/category")
-    public String getAll(Model model) {
-        Iterable<Category> list = categoryRepository.findAll();
-        model.addAttribute("list", list);
-        return "home";
+    // @GetMapping(value = "/category")
+    // public String getAll(Model model) {
+    //     Iterable<Category> list = categoryRepository.findAll();
+    //     model.addAttribute("list", list);
+    //     return "home";
 
-    }
+    // }
 
-    @PostMapping("/search_category")
-    public String searchVegetable(Model m, @RequestParam(name="search_category", required = false) String name){
-        List <Vegetable3> list;
-        if(name!=""){
-            System.out.println(name);
-            list = categoryRepository.searchCategoryByName(name);
-        } else{
-            list= (List<Vegetable3>) vegtableRepository.findAll();
-        }
-        m.addAttribute("data", list);
-        return "home";
-    }
 }

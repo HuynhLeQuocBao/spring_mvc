@@ -38,18 +38,13 @@
                         Category
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" th:href="@{/home}">All</a>
-                        <a class="dropdown-item" th:each="cat : ${list}" th:text="${cat.name}"
-                            th:href="@{/home(cat=${cat.CatagoryId})}"></a>
+                        <a class="dropdown-item" th:href="@{/}">All</a>
+                        <a class="dropdown-item" th:each="cat : ${list}" th:utext="${cat.Name}"
+                            th:href="@{'/'+${cat.CatagoryID}}"></a>
                     </div>
                 </div>
                 <form class="form-inline my-2 my-lg-0 mx-5" th:action="@{/search_vegetable}" method="post">
                     <input class="form-control mr-sm-2" type="search"  name="search_vegetable" placeholder="Search vegetable..."
-                        aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-                <form class="form-inline my-2 my-lg-0" th:action="@{/search_category}" method="post">
-                    <input class="form-control mr-sm-2" type="search" name="search_category" placeholder="Search category..."
                         aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>

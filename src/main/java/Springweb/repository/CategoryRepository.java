@@ -16,6 +16,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CategoryRepository extends CrudRepository<Category, Integer> {
-    @Query(value="SELECT vegetable.* FROM vegetable, category WHERE category.Name=?1 and category.CatagoryID = vegetable.CatagoryID", nativeQuery = true)
-    List <Vegetable3> searchCategoryByName( String name);
+    
 }
