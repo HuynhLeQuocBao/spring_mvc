@@ -31,8 +31,10 @@ public class VegetableController {
 
     @GetMapping("/")
     public String getAll(Model m) {
+        //danh sách sản phẩm
         Iterable<Vegetable3> list = vegtableRepository.findAll();
         m.addAttribute("data", list);
+        //danh sách danh mục
         Iterable<Category> category = categoryRepository.findAll();
         m.addAttribute("list", category);
         return "home";
@@ -42,8 +44,7 @@ public class VegetableController {
     public String searchVegetable(Model m, @RequestParam(name="search_vegetable", required = false) String name){
         List <Vegetable3> list;
         if(name!=""){
-            list = vegtableRepository.SearchByCategogyNameOrVegetableName( name, name);
-            System.out.println("test"+list);
+            list = vegtableRepository.SearchByCategoryNameOrVegetableName( name, name);
         } else{
             list= (List<Vegetable3>) vegtableRepository.findAll();
         }

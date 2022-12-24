@@ -62,6 +62,7 @@
                         <th scope="col">Unit</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Price</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody style="text-transform: uppercase;">
@@ -73,6 +74,9 @@
                         <td th:utext="${row.Unit}">...</td>
                         <td th:utext="${row.Amount}">...</td>
                         <td th:utext="${row.Price}">...</td>
+                        <td>
+                            <a th:href="@{|/cart/add/${row.VegetableID}|}">Add to cart</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
